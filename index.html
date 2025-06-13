@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <title>Taman Bambu Air - Wisata Alam Sermo</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+  <style>
+    /* Reset */
+    *, *::before, *::after {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #4b5563;
+      line-height: 1.6;
+      font-size: 16px;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+    a {
+      color: #2563eb;
+      text-decoration: none;
+    }
+    a:hover,
+    a:focus-visible {
+      text-decoration: underline;
+      outline-offset: 2px;
+    }
+    /* Container */
+    .container {
+      margin: 0 auto;
+      max-width: 1024px;
+      padding: 0 16px 32px;
+    }
+    /* Header */
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    nav {
+      max-width: 1024px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+    }
+    .logo {
+      font-weight: 600;
+      font-size: 1.5rem;
+      color: #111827;
+      user-select: none;
+    }
+    .nav-links {
+      display: none;
+      gap: 24px;
+    }
+    .nav-links a {
+      font-weight: 600;
+      font-size: 1rem;
+      color: #2563eb;
+      user-select: none;
+    }
+    .menu-button {
+      font-size: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #111827;
+      user-select: none;
+    }
+    .menu-button:focus-visible {
+      outline: 2px solid #2563eb;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    /* Mobile Navigation Overlay */
+    #mobile-nav {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(255 255 255 / 0.97);
+      backdrop-filter: saturate(200%) blur(12px);
+      flex-direction: column;
+      padding: 80px 24px 24px;
+      z-index: 200;
+      overflow-y: auto;
+    }
+    #mobile-nav.show {
+      display: flex;
+    }
+    #mobile-nav a {
+      font-size: 1.25rem;
+      padding: 16px 0;
+      border-bottom: 1px solid #e5e7eb;
+      font-weight: 600;
+      color: #111827;
+    }
+    #mobile-nav a:last-child {
+      border-bottom: none;
+    }
+    #close-menu {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-size: 32px;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #111827;
+      user-select: none;
+    }
+    #close-menu:focus-visible {
+      outline: 2px solid #2563eb;
+      outline-offset: 4px;
+      border-radius: 4px;
+    }
+    /* Hero */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 360px;
+      margin: 24px auto;
+      border-radius: 16px;
+      background: url('https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/6ea40877-e78a-47f0-8418-04e0b5f5b8a8.png') center/cover no-repeat;
+      box-shadow: 0 8px 24px rgb(0 0 0 / 0.15);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.5), transparent 60%);
+      border-radius: 16px;
+      z-index: 1;
+    }
+    .hero-content {
+      position: absolute;
+      bottom: 36px;
+      left: 24px;
+      z-index: 2;
+      color: white;
+      max-width: 80%;
+    }
+    .hero-title {
+      font-size: 2.25rem;
+      font-weight: 600;
+      margin: 0 0 0.4rem 0;
+      line-height: 1.1;
+      user-select: none;
+    }
+    .hero-description {
+      font-size: 1.125rem;
+      margin-bottom: 1rem;
+      user-select: none;
+      color: #e0e7ff;
+    }
+    .hero-buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      padding: 0.75rem 1.5rem;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+      user-select: none;
+    }
+    .btn-primary:focus-visible,
+    .btn-primary:hover {
+      background-color: #1e40af;
+      outline: none;
+    }
+    /* Highlights */
+    .highlights {
+      margin: 40px 0;
+      display: flex;
+      gap: 24px;
+      justify-content: space-around;
+      flex-wrap: wrap;
+    }
+    .highlight {
+      flex: 1 1 40%;
+      max-width: 180px;
+      text-align: center;
+      user-select: none;
+    }
+    .highlight-icon {
+      font-size: 48px;
+      color: #16a34a;
+      margin-bottom: 8px;
+    }
+    .highlight-text {
+      font-weight: 600;
+      font-size: 1.1rem;
+      color: #111827;
+    }
+    /* Section Titles */
+    h2.section-title {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      color: #111827;
+      user-select: none;
+    }
+    /* Services */
+    .services {
+      margin-bottom: 48px;
+      display: grid;
+      gap: 24px;
+    }
+    .service {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgb(0 0 0 / 0.07);
+    }
+    .service-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 12px;
+      color: #111827;
+      user-select: none;
+    }
+    .service-details p,
+    .service-details ul {
+      margin: 0.4rem 0;
+      color: #374151;
+      font-size: 1rem;
+      user-select: text;
+    }
+    .service-details ul {
+      padding-left: 1.25rem;
+      list-style-type: disc;
+    }
+    /* Pricing */
+    .pricing {
+      margin-bottom: 48px;
+      overflow-x: auto;
+    }
+    table.pricing-table {
+      border-collapse: collapse;
+      width: 100%;
+    }
+    table.pricing-table th,
+    table.pricing-table td {
+      border: 1px solid #e5e7eb;
+      padding: 12px 16px;
+      text-align: left;
+      user-select: text;
+    }
+    table.pricing-table th {
+      background-color: #e0e7ff;
+      font-weight: 600;
+      color: #2563eb;
+    }
+    /* Booking */
+    .booking {
+      margin-bottom: 48px;
+    }
+    .booking p {
+      font-weight: 600;
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+      user-select: text;
+    }
+    form.booking-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    form.booking-form input,
+    form.booking-form select,
+    form.booking-form textarea {
+      padding: 12px 16px;
+      border: 1px solid #d1d5db;
+      border-radius: 12px;
+      font-size: 1rem;
+      font-family: 'Poppins', sans-serif;
+      resize: vertical;
+    }
+    form.booking-form textarea {
+      min-height: 80px;
+    }
+    form.booking-form input:focus,
+    form.booking-form select:focus,
+    form.booking-form textarea:focus {
+      outline: 3px solid #2563eb;
+      outline-offset: 2px;
+      border-color: transparent;
+    }
+    .submit-button {
+      align-self: flex-start;
+      background-color: #2563eb;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      font-size: 1rem;
+      border-radius: 12px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.3s;
+      user-select: none;
+    }
+    .submit-button:hover,
+    .submit-button:focus-visible {
+      background-color: #1e40af;
+      outline: none;
+    }
+    /* Gallery */
+    .gallery {
+      margin-bottom: 48px;
+    }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
+      gap: 16px;
+    }
+    .gallery-grid img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      border-radius: 12px;
+      user-select: none;
+    }
+    /* Testimonials */
+    .testimonials {
+      margin-bottom: 48px;
+    }
+    .testimonial {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      margin-bottom: 20px;
+      user-select: text;
+    }
+    .testimonial p:first-child {
+      font-style: italic;
+      margin-bottom: 12px;
+    }
+    .testimonial p:last-child {
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: #2563eb;
+      user-select: text;
+    }
+    /* Contact */
+    .contact h3 {
+      margin-top: 32px;
+      margin-bottom: 12px;
+      font-weight: 600;
+      user-select: none;
+      color: #111827;
+    }
+    .contact p,
+    .contact a {
+      margin-bottom: 8px;
+      color: #374151;
+      font-size: 1rem;
+      user-select: text;
+    }
+    .contact a {
+      color: #2563eb;
+    }
+    .contact a:hover,
+    .contact a:focus-visible {
+      color: #1e40af;
+      outline: none;
+    }
+    iframe {
+      width: 100%;
+      border-radius: 12px;
+      border: none;
+      min-height: 320px;
+      margin-top: 12px;
+    }
+    /* Footer */
+    footer {
+      background-color: #f9fafb;
+      border-top: 1px solid #e5e7eb;
+      text-align: center;
+      padding: 16px 16px;
+      font-size: 0.875rem;
+      color: #9ca3af;
+      user-select: none;
+    }
+    footer a {
+      color: #2563eb;
+      margin: 0 8px;
+      font-weight: 600;
+    }
+    footer a:hover,
+    footer a:focus-visible {
+      text-decoration: underline;
+      outline: none;
+    }
+    /* Tablet and larger */
+    @media(min-width:768px) {
+      .nav-links {
+        display: flex;
+      }
+      .menu-button {
+        display: none;
+      }
+      #mobile-nav {
+        display: none !important;
+      }
+      .highlights {
+        gap: 40px;
+        justify-content: center;
+      }
+      .highlight {
+        max-width: 140px;
+      }
+      .services {
+        grid-template-columns: 1fr 1fr;
+      }
+      .gallery-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+      form.booking-form {
+        max-width: 480px;
+      }
+      .hero {
+        height: 420px;
+      }
+      .hero-title {
+        font-size: 2.75rem;
+      }
+      .hero-description {
+        font-size: 1.25rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav class="container" role="navigation" aria-label="Navigasi Utama">
+      <div class="logo" aria-label="Logo Taman Bambu Air">Taman Bambu Air</div>
+      <button id="menu-toggle" class="menu-button" aria-haspopup="true" aria-controls="mobile-nav" aria-expanded="false" aria-label="Buka menu navigasi">
+        <span class="material-icons" aria-hidden="true">menu</span>
+      </button>
+      <div class="nav-links" role="menubar">
+        <a href="#services" role="menuitem" tabindex="0">Layanan</a>
+        <a href="#pricing" role="menuitem" tabindex="0">Harga</a>
+        <a href="#booking" role="menuitem" tabindex="0">Booking</a>
+        <a href="#gallery" role="menuitem" tabindex="0">Galeri</a>
+        <a href="#testimonials" role="menuitem" tabindex="0">Testimoni</a>
+        <a href="#contact" role="menuitem" tabindex="0">Kontak</a>
+      </div>
+    </nav>
+  </header>
+
+  <nav id="mobile-nav" aria-label="Menu Navigasi Mobile" role="dialog" aria-modal="true" aria-hidden="true">
+    <button id="close-menu" class="menu-button" aria-label="Tutup menu navigasi">
+      <span class="material-icons" aria-hidden="true">close</span>
+    </button>
+    <a href="#services">Layanan</a>
+    <a href="#pricing">Harga</a>
+    <a href="#booking">Booking</a>
+    <a href="#gallery">Galeri</a>
+    <a href="#testimonials">Testimoni</a>
+    <a href="#contact">Kontak</a>
+  </nav>
+
+  <main class="container">
+    <!-- Hero -->
+    <section class="hero" role="banner" aria-label="Pemandangan utama Taman Bambu Air dengan bambu dan air jernih">
+      <div class="hero-content">
+        <h1 class="hero-title">Selamat Datang di Taman Bambu Air</h1>
+        <p class="hero-description">Nikmati keindahan alam dan suasana sejuk Waduk Sermo. Tempat yang sempurna untuk bersantai dan berkemah bersama keluarga.</p>
+        <div class="hero-buttons">
+          <button class="btn-primary" type="button" onclick="document.getElementById('services').scrollIntoView({behavior:'smooth'})">Lihat Layanan</button>
+          <button class="btn-primary" type="button" onclick="document.getElementById('booking').scrollIntoView({behavior:'smooth'})">Booking Sekarang</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section class="highlights" aria-label="Highlight fitur utama">
+      <div class="highlight" tabindex="0">
+        <span class="material-icons highlight-icon" aria-hidden="true">air</span>
+        <p class="highlight-text">Udara Sejuk</p>
+      </div>
+      <div class="highlight" tabindex="0">
+        <span class="material-icons highlight-icon" aria-hidden="true">rowing</span>
+        <p class="highlight-text">Kapal Prewedding</p>
+      </div>
+      <div class="highlight" tabindex="0">
+        <span class="material-icons highlight-icon" aria-hidden="true">camping</span>
+        <p class="highlight-text">Camping Keluarga</p>
+      </div>
+      <div class="highlight" tabindex="0">
+        <span class="material-icons highlight-icon" aria-hidden="true">photo_camera</span>
+        <p class="highlight-text">Spot Foto Instagramable</p>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="services" aria-label="Layanan">
+      <h2 class="section-title">Layanan</h2>
+      <article class="service" tabindex="0">
+        <h3 class="service-title">Kapal Prewedding</h3>
+        <div class="service-details">
+          <p>Tarif: Rp. 200.000,- / jam</p>
+          <p>Jam Operasional: 07.00 - 17.00 WIB</p>
+          <p>Charge Tambahan: Rp. 50.000,- di luar jam operasional</p>
+          <p>Catatan: Harap booking minimal H-1</p>
+        </div>
+      </article>
+      <article class="service" tabindex="0">
+        <h3 class="service-title">Paket Camping Keluarga</h3>
+        <div class="service-details">
+          <p>Kapasitas: 4–6 orang</p>
+          <p>Fasilitas Lengkap:</p>
+          <ul>
+            <li>Tenda kapasitas 6 orang</li>
+            <li>Kasur, tikar piknik</li>
+            <li>Kursi (4), meja (1)</li>
+            <li>Kompor BBQ + gas, nesting</li>
+            <li>Lampu tenda (2)</li>
+          </ul>
+          <p>Tarif: Rp. 275.000,- (belum termasuk HTM)</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" class="pricing" aria-label="Harga">
+      <h2 class="section-title">Harga</h2>
+      <table class="pricing-table" role="table" aria-describedby="pricing-desc">
+        <caption id="pricing-desc" class="sr-only">Daftar harga layanan Taman Bambu Air</caption>
+        <thead>
+          <tr>
+            <th scope="col">Layanan</th>
+            <th scope="col">Harga</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Kapal Prewedding</td>
+            <td>Rp. 200.000,- / jam</td>
+          </tr>
+          <tr>
+            <td>Paket Camping Keluarga</td>
+            <td>Rp. 275.000,- (belum HTM)</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- Booking -->
+    <section id="booking" class="booking" aria-label="Formulir Booking">
+      <h2 class="section-title">Cara Booking</h2>
+      <p>Kontak Langsung:</p>
+      <p>Kapal Prewedding: 📞 <a href="tel:+6281328091605" aria-label="Telepon kapal prewedding">081 328 091 605</a></p>
+      <p>Bambu Air Glamping: 📞 <a href="tel:+6281228902811" aria-label="Telepon Bambu Air Glamping">081 228 902 811</a></p>
+      <form class="booking-form" aria-describedby="booking-info" onsubmit="alert('Terima kasih, formulir dikirim! (Simulasi)'); return false;">
+        <label for="full-name">Nama Lengkap<span aria-hidden="true" style="color:#dc2626;"> *</span></label>
+        <input type="text" id="full-name" name="full-name" placeholder="Nama Lengkap" required aria-required="true" />
+        <label for="phone">Nomor Telepon<span aria-hidden="true" style="color:#dc2626;"> *</span></label>
+        <input type="tel" id="phone" name="phone" placeholder="Nomor Telepon" required aria-required="true" pattern="\\+?[0-9\s\-]{6,15}" />
+        <label for="date">Tanggal Booking<span aria-hidden="true" style="color:#dc2626;"> *</span></label>
+        <input type="date" id="date" name="date" required aria-required="true" />
+        <label for="service">Pilih Layanan<span aria-hidden="true" style="color:#dc2626;"> *</span></label>
+        <select id="service" name="service" required aria-required="true">
+          <option value="" disabled selected>Pilih Layanan</option>
+          <option value="kapal">Kapal Prewedding</option>
+          <option value="camping">Camping Keluarga</option>
+        </select>
+        <label for="notes">Catatan Tambahan (opsional)</label>
+        <textarea id="notes" name="notes" placeholder="Catatan tambahan"></textarea>
+        <button type="submit" class="submit-button">Kirim Booking</button>
+      </form>
+    </section>
+
+    <!-- Gallery -->
+    <section id="gallery" class="gallery" aria-label="Galeri Foto">
+      <h2 class="section-title">Galeri</h2>
+      <div class="gallery-grid">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/e8c84c01-fdb5-41cc-8537-d7bde22b5eee.png" alt="Pemandangan siang hari Taman Bambu Air dengan pepohonan bambu dan air jernih" loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/074c3915-a00c-43ae-82cf-629e4ef3d0dd.png" alt="Pemandangan malam Taman Bambu Air dengan lampu yang menghiasi area wisata" loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/d867feba-6d1f-4b1c-a2ef-4efb3b61550f.png" alt="Pengunjung menikmati aktivitas di Taman Bambu Air, berfoto dan bermain" loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/46d6806a-be8c-43b8-b36a-7b5694919db4.png" alt="Spot foto instagramable dengan latar bambu hijau dan air yang jernih" loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/4640d292-3e9b-486e-bf00-2bace15d5f8c.png" alt="Fasilitas tenda camping dengan perlengkapan lengkap di area Taman Bambu Air" loading="lazy" />
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/66852089-fcdf-4517-898f-98f1d30a7135.png" alt="Kapal yang digunakan untuk sesi prewedding di Taman Bambu Air" loading="lazy" />
+      </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="testimonials" class="testimonials" aria-label="Testimoni Pengunjung">
+      <h2 class="section-title">Testimoni</h2>
+      <article class="testimonial" tabindex="0">
+        <p>"Tempat yang sangat indah dan tenang. Sangat cocok untuk keluarga!"</p>
+        <p><strong>Andi, 21 Mei 2023</strong></p>
+      </article>
+      <article class="testimonial" tabindex="0">
+        <p>"Pengalaman yang luar biasa, pelayanan yang ramah dan fasilitas lengkap."</p>
+        <p><strong>Sari, 5 Juni 2023</strong></p>
+      </article>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact" aria-label="Informasi Kontak">
+      <h2 class="section-title">Kontak Kami</h2>
+      <p><strong>Alamat Lengkap:</strong> Desa Sermo, Kulon Progo, Yogyakarta, Indonesia</p>
+      <p><strong>Email:</strong> <a href="mailto:info@tamanbambuair.com">info@tamanbambuair.com</a></p>
+      <p><strong>WhatsApp:</strong> <a href="https://wa.me/6281328091605" target="_blank" rel="noopener" aria-label="WhatsApp Taman Bambu Air">081 328 091 605</a></p>
+      <div>
+        <h3>Sosial Media</h3>
+        <a href="#" aria-label="Instagram Taman Bambu Air">Instagram</a> |
+        <a href="#" aria-label="Facebook Taman Bambu Air">Facebook</a> |
+        <a href="#" aria-label="TikTok Taman Bambu Air">TikTok</a>
+      </div>
+      <div>
+        <h3>Peta Lokasi</h3>
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3955.041724833253!2d110.13336411525225!3d-7.782268978296398!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e7a56b2fb04bc4f%3A0x60e11ffb17f58609!2sWaduk%20Sermo%20-%20Taman%20Bambu%20Air!5e0!3m2!1sid!2sid!4v1687449751234!5m2!1sid!2sid"
+          width="100%"
+          height="320"
+          allowfullscreen=""
+          loading="lazy"
+          aria-label="Peta lokasi Taman Bambu Air di Google Maps"
+        ></iframe>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container" role="contentinfo">
+      <p>&copy; 2024 Taman Bambu Air. Semua hak cipta dilindungi.</p>
+      <nav aria-label="Link cepat footer">
+        <a href="#hero">Beranda</a> |
+        <a href="#services">Layanan</a> |
+        <a href="#pricing">Harga</a> |
+        <a href="#contact">Kontak</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const closeMenuBtn = document.getElementById('close-menu');
+
+    menuToggle.addEventListener('click', () => {
+      const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+      if (!expanded) {
+        mobileNav.classList.add('show');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        mobileNav.setAttribute('aria-hidden', 'false');
+        closeMenuBtn.focus();
+      } else {
+        mobileNav.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        menuToggle.focus();
+      }
+    });
+
+    closeMenuBtn.addEventListener('click', () => {
+      mobileNav.classList.remove('show');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      mobileNav.setAttribute('aria-hidden', 'true');
+      menuToggle.focus();
+    });
+
+    // Close mobile menu when clicking on nav links
+    mobileNav.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileNav.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        menuToggle.focus();
+      });
+    });
+
+    // Close mobile menu on Escape key
+    document.addEventListener('keydown', (e) => {
+      if(e.key === 'Escape' && mobileNav.classList.contains('show')) {
+        mobileNav.classList.remove('show');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        mobileNav.setAttribute('aria-hidden', 'true');
+        menuToggle.focus();
+      }
+    });
+  </script>
+</body>
+</html>
+
