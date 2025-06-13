@@ -40,42 +40,74 @@
     /* Header */
     header {
       background-color: #ffffff;
-      box-shadow: 0 2px 4px rgb(0 0 0 / 0.1);
+      box-shadow: 0 2px 6px rgb(0 0 0 / 0.12);
       position: sticky;
       top: 0;
       z-index: 100;
+      transition: padding 0.3s ease;
     }
     nav {
       max-width: 1024px;
       margin: 0 auto;
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      padding: 12px 16px;
+      justify-content: center;
+      gap: 48px;
+      padding: 8px 16px; /* Dikurangi dari 12px */
+      position: relative;
+    }
+    /* Logo container with image and text */
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      cursor: pointer;
+      user-select: none;
+      flex-shrink: 0;
+    }
+    .logo-container img {
+      height: 42px; /* Dikurangi dari 48px */
+      width: auto;
+      border-radius: 8px;
+      display: block;
     }
     .logo {
-      font-weight: 600;
-      font-size: 1.5rem;
+      font-weight: 700;
+      font-size: 1.6rem; /* Sedikit diperbesar */
       color: #111827;
+      white-space: nowrap;
       user-select: none;
     }
     .nav-links {
       display: none;
-      gap: 24px;
+      gap: 32px; /* Spasi antar menu diperbesar */
     }
     .nav-links a {
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 700; /* font lebih tebal */
+      font-size: 1.15rem; /* font lebih besar */
       color: #2563eb;
       user-select: none;
+      padding: 8px 0;
+      transition: color 0.3s ease;
+    }
+    .nav-links a:hover,
+    .nav-links a:focus-visible {
+      color: #1e40af;
+      outline: none;
     }
     .menu-button {
-      font-size: 32px;
+      font-size: 36px; /* sedikit diperbesar untuk klik lebih mudah */
       background: none;
       border: none;
       cursor: pointer;
       color: #111827;
       user-select: none;
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      padding: 4px;
+      line-height: 1;
     }
     .menu-button:focus-visible {
       outline: 2px solid #2563eb;
@@ -100,11 +132,17 @@
       display: flex;
     }
     #mobile-nav a {
-      font-size: 1.25rem;
-      padding: 16px 0;
+      font-size: 1.3rem; /* diperbesar */
+      padding: 18px 0;
       border-bottom: 1px solid #e5e7eb;
-      font-weight: 600;
+      font-weight: 700;
       color: #111827;
+      transition: color 0.3s ease;
+    }
+    #mobile-nav a:hover,
+    #mobile-nav a:focus-visible {
+      color: #1e40af;
+      outline: none;
     }
     #mobile-nav a:last-child {
       border-bottom: none;
@@ -113,12 +151,14 @@
       position: absolute;
       top: 20px;
       right: 24px;
-      font-size: 32px;
+      font-size: 36px;
       background: none;
       border: none;
       cursor: pointer;
       color: #111827;
       user-select: none;
+      padding: 4px;
+      line-height: 1;
     }
     #close-menu:focus-visible {
       outline: 2px solid #2563eb;
@@ -153,7 +193,7 @@
     }
     .hero-title {
       font-size: 2.25rem;
-      font-weight: 600;
+      font-weight: 700;
       margin: 0 0 0.4rem 0;
       line-height: 1.1;
       user-select: none;
@@ -175,8 +215,8 @@
       border: none;
       border-radius: 12px;
       padding: 0.75rem 1.5rem;
-      font-weight: 600;
-      font-size: 1rem;
+      font-weight: 700;
+      font-size: 1.1rem;
       cursor: pointer;
       transition: background-color 0.3s ease;
       user-select: none;
@@ -190,7 +230,7 @@
     .highlights {
       margin: 40px 0;
       display: flex;
-      gap: 24px;
+      gap: 32px;
       justify-content: space-around;
       flex-wrap: wrap;
     }
@@ -201,19 +241,19 @@
       user-select: none;
     }
     .highlight-icon {
-      font-size: 48px;
+      font-size: 52px;
       color: #16a34a;
       margin-bottom: 8px;
     }
     .highlight-text {
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-weight: 700;
+      font-size: 1.15rem;
       color: #111827;
     }
     /* Section Titles */
     h2.section-title {
-      font-size: 1.75rem;
-      font-weight: 600;
+      font-size: 1.9rem;
+      font-weight: 700;
       margin-bottom: 1rem;
       color: #111827;
       user-select: none;
@@ -222,30 +262,30 @@
     .services {
       margin-bottom: 48px;
       display: grid;
-      gap: 24px;
+      gap: 28px;
     }
     .service {
       background: #f9fafb;
       border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgb(0 0 0 / 0.07);
+      padding: 24px;
+      box-shadow: 0 3px 10px rgb(0 0 0 / 0.1);
     }
     .service-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 12px;
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 14px;
       color: #111827;
       user-select: none;
     }
     .service-details p,
     .service-details ul {
-      margin: 0.4rem 0;
+      margin: 0.5rem 0;
       color: #374151;
-      font-size: 1rem;
+      font-size: 1.1rem;
       user-select: text;
     }
     .service-details ul {
-      padding-left: 1.25rem;
+      padding-left: 1.5rem;
       list-style-type: disc;
     }
     /* Pricing */
@@ -256,52 +296,65 @@
     table.pricing-table {
       border-collapse: collapse;
       width: 100%;
+      min-width: 300px;
     }
     table.pricing-table th,
     table.pricing-table td {
       border: 1px solid #e5e7eb;
-      padding: 12px 16px;
+      padding: 14px 18px;
       text-align: left;
       user-select: text;
     }
     table.pricing-table th {
       background-color: #e0e7ff;
-      font-weight: 600;
+      font-weight: 700;
       color: #2563eb;
+      font-size: 1.1rem;
+    }
+    table.pricing-table td {
+      font-size: 1.05rem;
     }
     /* Booking */
     .booking {
       margin-bottom: 48px;
     }
     .booking p {
-      font-weight: 600;
-      font-size: 1.1rem;
+      font-weight: 700;
+      font-size: 1.15rem;
       margin-bottom: 0.5rem;
       user-select: text;
     }
     form.booking-form {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 18px;
+      max-width: 520px;
+    }
+    form.booking-form label {
+      font-weight: 600;
+      font-size: 1rem;
+      display: block;
+      user-select: text;
     }
     form.booking-form input,
     form.booking-form select,
     form.booking-form textarea {
-      padding: 12px 16px;
+      padding: 14px 18px;
       border: 1px solid #d1d5db;
-      border-radius: 12px;
-      font-size: 1rem;
+      border-radius: 14px;
+      font-size: 1.1rem;
       font-family: 'Poppins', sans-serif;
       resize: vertical;
+      transition: border-color 0.3s ease;
     }
     form.booking-form textarea {
-      min-height: 80px;
+      min-height: 100px;
     }
     form.booking-form input:focus,
     form.booking-form select:focus,
     form.booking-form textarea:focus {
       outline: 3px solid #2563eb;
-      outline-offset: 2px;
+      outline-offset: 3px;
       border-color: transparent;
     }
     .submit-button {
@@ -309,11 +362,11 @@
       background-color: #2563eb;
       color: white;
       border: none;
-      padding: 12px 24px;
-      font-size: 1rem;
-      border-radius: 12px;
+      padding: 14px 28px;
+      font-size: 1.1rem;
+      border-radius: 14px;
       cursor: pointer;
-      font-weight: 600;
+      font-weight: 700;
       transition: background-color 0.3s;
       user-select: none;
     }
@@ -328,14 +381,14 @@
     }
     .gallery-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit,minmax(240px,1fr));
-      gap: 16px;
+      grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+      gap: 20px;
     }
     .gallery-grid img {
       width: 100%;
-      height: 160px;
+      height: 180px;
       object-fit: cover;
-      border-radius: 12px;
+      border-radius: 16px;
       user-select: none;
     }
     /* Testimonials */
@@ -344,39 +397,41 @@
     }
     .testimonial {
       background: #f9fafb;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-      margin-bottom: 20px;
+      border-radius: 16px;
+      padding: 24px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+      margin-bottom: 24px;
       user-select: text;
     }
     .testimonial p:first-child {
       font-style: italic;
-      margin-bottom: 12px;
+      font-size: 1.1rem;
+      margin-bottom: 14px;
     }
     .testimonial p:last-child {
-      font-weight: 600;
-      font-size: 0.9rem;
+      font-weight: 700;
+      font-size: 1rem;
       color: #2563eb;
       user-select: text;
     }
     /* Contact */
     .contact h3 {
-      margin-top: 32px;
-      margin-bottom: 12px;
-      font-weight: 600;
+      margin-top: 36px;
+      margin-bottom: 14px;
+      font-weight: 700;
       user-select: none;
       color: #111827;
     }
     .contact p,
     .contact a {
-      margin-bottom: 8px;
+      margin-bottom: 10px;
       color: #374151;
-      font-size: 1rem;
+      font-size: 1.1rem;
       user-select: text;
     }
     .contact a {
       color: #2563eb;
+      font-weight: 700;
     }
     .contact a:hover,
     .contact a:focus-visible {
@@ -385,25 +440,26 @@
     }
     iframe {
       width: 100%;
-      border-radius: 12px;
+      border-radius: 16px;
       border: none;
-      min-height: 320px;
-      margin-top: 12px;
+      min-height: 360px;
+      margin-top: 14px;
     }
     /* Footer */
     footer {
       background-color: #f9fafb;
       border-top: 1px solid #e5e7eb;
       text-align: center;
-      padding: 16px 16px;
-      font-size: 0.875rem;
+      padding: 20px 16px;
+      font-size: 0.9rem;
       color: #9ca3af;
       user-select: none;
     }
     footer a {
-      color: #2563eb;
-      margin: 0 8px;
-      font-weight: 600;
+      color: #5c5f66;
+      margin: 0 10px;
+      font-weight: 700;
+      font-size: 1rem;
     }
     footer a:hover,
     footer a:focus-visible {
@@ -421,12 +477,16 @@
       #mobile-nav {
         display: none !important;
       }
+      nav {
+        justify-content: center;
+        gap: 56px;
+      }
       .highlights {
-        gap: 40px;
+        gap: 48px;
         justify-content: center;
       }
       .highlight {
-        max-width: 140px;
+        max-width: 160px;
       }
       .services {
         grid-template-columns: 1fr 1fr;
@@ -435,16 +495,16 @@
         grid-template-columns: repeat(3, 1fr);
       }
       form.booking-form {
-        max-width: 480px;
+        max-width: 520px;
       }
       .hero {
-        height: 420px;
+        height: 440px;
       }
       .hero-title {
-        font-size: 2.75rem;
+        font-size: 3rem;
       }
       .hero-description {
-        font-size: 1.25rem;
+        font-size: 1.3rem;
       }
     }
   </style>
@@ -452,7 +512,10 @@
 <body>
   <header>
     <nav class="container" role="navigation" aria-label="Navigasi Utama">
-      <div class="logo" aria-label="Logo Taman Bambu Air">Taman Bambu Air</div>
+      <div class="logo-container" tabindex="0" role="img" aria-label="Logo Taman Bambu Air">
+        <img src="https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/8ddcb7ac-6b96-4917-ae54-7bc5c7227c1c.png" alt="Logo Taman Bambu Air" />
+        <div class="logo">Taman Bambu Air</div>
+      </div>
       <button id="menu-toggle" class="menu-button" aria-haspopup="true" aria-controls="mobile-nav" aria-expanded="false" aria-label="Buka menu navigasi">
         <span class="material-icons" aria-hidden="true">menu</span>
       </button>
@@ -645,11 +708,11 @@
   <footer>
     <div class="container" role="contentinfo">
       <p>&copy; 2024 Taman Bambu Air. Semua hak cipta dilindungi.</p>
-      <nav aria-label="Link cepat footer">
         <a href="#hero">Beranda</a> |
         <a href="#services">Layanan</a> |
         <a href="#pricing">Harga</a> |
-        <a href="#contact">Kontak</a>
+        <a href="#contact">Kontak</a><br>
+        Dikembangkan Oleh <a href="#contact">Restu Meilandani</a>
       </nav>
     </div>
   </footer>
@@ -704,4 +767,5 @@
   </script>
 </body>
 </html>
+
 
